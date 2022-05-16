@@ -1,9 +1,6 @@
 package com.marek.sfgdi;
 
-import com.marek.sfgdi.controllers.ConstructorInjectedController;
-import com.marek.sfgdi.controllers.MyController;
-import com.marek.sfgdi.controllers.PropertyInjectedController;
-import com.marek.sfgdi.controllers.SetterInjectedController;
+import com.marek.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,10 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		System.out.println("------ Profile ------");
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.getGreeting());
 
 		System.out.println("------ Primary ------");
 		MyController myController = (MyController) ctx.getBean("myController");
